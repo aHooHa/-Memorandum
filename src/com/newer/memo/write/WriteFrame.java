@@ -1,11 +1,13 @@
 package com.newer.memo.write;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.newer.memo.dao.Memo;
+import com.newer.memo.dao.MemoDao;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -13,6 +15,13 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.awt.event.ActionEvent;
 
 public class WriteFrame extends JFrame {
 
@@ -74,8 +83,48 @@ public class WriteFrame extends JFrame {
 		JTextArea textArea = new JTextArea();
 		
 		JButton button = new JButton("\u4FDD\u5B58");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String name = textField.getText();
+				String type = textField_1.getText();
+				String t =  textField_2.getText();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				java.util.Date date;
+				java.sql.Date time;
+				try {
+					date = sdf.parse(t);
+					time = new Date(date.getTime());
+					System.out.println(time);
+					String theame = textField_3.getText();
+					String context = textArea.getText();
+					
+					Memo m = new Memo(name,type,theame,context,time);
+					try {
+						new MemoDao().saveMemo(m);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+			}
+		});
 		
 		JButton button_1 = new JButton("\u91CD\u5199");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText("");
+				textField_1.setText("");
+				textField_2.setText("");
+				textField_3.setText("");
+				textArea.setText("");
+				
+			}
+		});
 		
 		JButton button_2 = new JButton("\u8FD4\u56DE");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
