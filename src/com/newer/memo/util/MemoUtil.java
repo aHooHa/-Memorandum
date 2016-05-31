@@ -12,9 +12,9 @@ public class MemoUtil {
 	/* 数据库连接路径 */
 	public static final String URL = "jdbc:oracle:thin:@localhost:1521:ORCL";
 	/* 数据连接用户名 */
-	public static final String USER = "bookstore";
+	public static final String USER = "sunya";
 	/* 数据连接密码 */
-	public static final String PWD = "bookstore";
+	public static final String PWD = "sunya";
 	/* 数据库连接对象 */
 	public static Connection con = null;
 
@@ -48,9 +48,16 @@ public class MemoUtil {
 	 */
 	public static void closeAll(ResultSet rs, Statement stmt, Connection con) {
 		try {
-			rs.close();
-			stmt.close();
-			con.close();
+			if(rs !=null){
+				rs.close();
+			}
+			if(stmt != null){
+				stmt.close();
+			}
+			
+			if(con != null){
+				con.close();
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -12,11 +12,11 @@ import javax.swing.JTextArea;
 
 import com.newer.memo.change.ChangeMemo;
 import com.newer.memo.remove.RemoveFrame;
-import com.newer.memo.reserch.ReserchFrame;
 import com.newer.memo.write.WriteFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class MemoFrame extends JFrame {
 
@@ -89,7 +89,12 @@ public class MemoFrame extends JFrame {
 		JMenuItem menuItem_1 = new JMenuItem("\u4FEE\u6539\u5907\u6CE8");
 		menuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ChangeMemo().run();
+				try {
+					new ChangeMemo().run();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		mnNewMenu.add(menuItem_1);
@@ -100,20 +105,17 @@ public class MemoFrame extends JFrame {
 		JMenuItem menuItem_2 = new JMenuItem("\u5220\u9664\u5907\u6CE8");
 		menuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new RemoveFrame().run();
+				try {
+					new RemoveFrame().run();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		mnNewMenu.add(menuItem_2);
 		
-		/**
-		 * 实现查询功能
-		 */
-		JMenuItem menuItem_3 = new JMenuItem("\u67E5\u8BE2\u5907\u6CE8");
-		menuItem_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new ReserchFrame().run();
-			}
-		});
-		mnNewMenu.add(menuItem_3);
+		
+		
 	}
 }

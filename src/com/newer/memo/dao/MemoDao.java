@@ -18,21 +18,21 @@ public class MemoDao {
 	public void saveMemo(Memo m) throws SQLException {
 
 		cont = MemoUtil.getConnection();
-		String sql = "insert into MEMO  values(?,?,?,?,?) ";
+		String sql = "insert into MEMO(name,type,theame,context,time1)  values(?,?,?,?,?) ";
 		stat = cont.prepareStatement(sql);
 		stat.setString(1, m.getName());
 		stat.setString(2, m.getType());
 		stat.setString(3, m.getContext());
 		stat.setString(4, m.getTheame());
 		
-		stat.setDate(5, m.getTime());
+		stat.setString(5, m.getTime());
 		
 		stat.executeUpdate();
 
 		MemoUtil.closeAll(null, stat, cont);
 	}
 
-	public List<Memo> findAll(Memo mo) throws SQLException {
+	public List<Memo> findAll() throws SQLException {
 
 		List<Memo> list = new ArrayList<>();
 		cont = MemoUtil.getConnection();
@@ -44,9 +44,10 @@ public class MemoDao {
 			m.setId(res.getInt("id"));
 			m.setName(res.getString("name"));
 			m.setType(res.getString("type"));
-			m.setContext(res.getString("context"));
+			m.setTime(res.getString("time1"));
 			m.setTheame(res.getString("theame"));
-			m.setTime(res.getDate("time"));
+			m.setContext(res.getString("context"));
+			
 			list.add(m);
 		}
 		MemoUtil.closeAll(res, stat, cont);
@@ -58,18 +59,18 @@ public class MemoDao {
 		String sql = "delete from MEMO  where id =?";
 		stat = cont.prepareStatement(sql);
 		stat.setInt(1, mo.getId());
-		stat.executeLargeUpdate();
+		stat.executeUpdate();
 		MemoUtil.closeAll(null, stat, cont);
 	}
 	public void updateMemo(Memo mo) throws SQLException{
 		cont = MemoUtil.getConnection();
-		String sql="update MEMO set name=?,type=?,context=?,theame=?,time=? where id=?";
+		String sql="update MEMO set name=?,type=?,context=?,theame=?,time1=? where id=?";
 		stat = cont.prepareStatement(sql);
 		stat.setString(1, mo.getName());
 		stat.setString(2, mo.getType());
 		stat.setString(3, mo.getContext());
 		stat.setString(4, mo.getTheame());
-		stat.setDate(5, mo.getTime());
+		stat.setString(5, mo.getTime());
 		stat.setInt(6, mo.getId());
 		stat.executeUpdate();
 		

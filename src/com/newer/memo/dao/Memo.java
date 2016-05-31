@@ -1,6 +1,5 @@
 package com.newer.memo.dao;
 
-import java.sql.Date;
 
 public class Memo {
 	
@@ -9,7 +8,7 @@ public class Memo {
 	private String type;
 	private String context;
 	private String theame;
-	private Date time;
+	private String time;
 	
 	
 	public Memo() {
@@ -17,7 +16,7 @@ public class Memo {
 	}
 
 
-	public Memo(String name, String type, String context, String theame, Date time) {
+	public Memo(String name, String type, String context, String theame, String time) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -27,7 +26,7 @@ public class Memo {
 	}
 
 
-	public Memo(int id, String name, String type, String context, String theame, Date time) {
+	public Memo(int id, String name, String type, String context, String theame, String time) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -88,12 +87,12 @@ public class Memo {
 	}
 
 
-	public Date getTime() {
+	public String  getTime() {
 		return time;
 	}
 
 
-	public void setTime(Date time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 

@@ -11,6 +11,7 @@ import com.newer.memo.dao.MemoDao;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextArea;
@@ -88,27 +89,25 @@ public class WriteFrame extends JFrame {
 				String name = textField.getText();
 				String type = textField_1.getText();
 				String t =  textField_2.getText();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				java.util.Date date;
-				java.sql.Date time;
-				try {
-					date = sdf.parse(t);
-					time = new Date(date.getTime());
-					System.out.println(time);
-					String theame = textField_3.getText();
-					String context = textArea.getText();
-					
-					Memo m = new Memo(name,type,theame,context,time);
-					try {
-						new MemoDao().saveMemo(m);
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+//					time = sdf.parse(t);
+				//					time = new Date(date.getTime());
+									String theame = textField_3.getText();
+									String context = textArea.getText();
+									
+									Memo m = new Memo(name,type,theame,context,t);
+									try {
+										new MemoDao().saveMemo(m);
+										JOptionPane.showMessageDialog(contentPane, "保存完成");
+										textField.setText("");
+										textField_1.setText("");
+										textField_2.setText("");
+										textField_3.setText("");
+										textArea.setText("");
+										
+									} catch (SQLException e1) {
+										// TODO Auto-generated catch block
+										e1.printStackTrace();
+									}
 				
 				
 			}
@@ -127,6 +126,11 @@ public class WriteFrame extends JFrame {
 		});
 		
 		JButton button_2 = new JButton("\u8FD4\u56DE");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
