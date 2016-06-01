@@ -31,6 +31,7 @@ public class RemoveFrame extends JFrame {
 	private JTextField textField_3;
 	private List<Memo> list = new ArrayList<>();
 	private int index = 0;
+	private boolean tag = true;
 
 	public void run() {
 		try {
@@ -51,6 +52,7 @@ public class RemoveFrame extends JFrame {
 		list = new MemoDao().findAll();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		setSize(600,320);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -82,14 +84,14 @@ public class RemoveFrame extends JFrame {
 		JButton button_1 = new JButton("下一条");
 		JButton button_2 = new JButton("删除");
 		JButton button_3 = new JButton("返回");
-		boolean tag = true;
+
 		if (list.size() == 0) {
-			
+
 			JOptionPane.showMessageDialog(textArea, "没有备忘记录");
 			tag = false;
-			
-		} 
-		
+
+		}
+
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
 				.createSequentialGroup().addContainerGap()
@@ -147,100 +149,110 @@ public class RemoveFrame extends JFrame {
 								.addComponent(button_1).addComponent(button_2).addComponent(button_3))
 						.addContainerGap(14, Short.MAX_VALUE)));
 		contentPane.setLayout(gl_contentPane);
-		
-		if(tag){
+
+		if (tag) {
+
+			button_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if (list.size() == 0) {
+
+					} else {
+					try {
+						new MemoDao().removeMemo(list.get(index));
+						list.remove(index);
+						
+						--index;
+						if (list.size() == 0) {
+							textField.setText("");
+							textField_1.setText("");
+							textField_2.setText("");
+							textField_3.setText("");
+							textArea.setText("");
+							JOptionPane.showMessageDialog(textArea, "备忘本为空");
+
+						} else {
+
+							JOptionPane.showMessageDialog(textArea, "删除成功");
+							textField.setText("");
+							textField_1.setText("");
+							textField_2.setText("");
+							textField_3.setText("");
+							textArea.setText("");
+
+						}
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					}
+				}
+			});
+
 			Memo m = list.get(index);
 			textField.setText(m.getName());
 			textField_1.setText(m.getType());
 			textField_2.setText(m.getTime());
 			textField_3.setText(m.getTheame());
 			textArea.setText(m.getContext());
-		
-		
-		
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
 
-				--index;
-				if (index < 0) {
-					index = 0;
-					JOptionPane.showMessageDialog(textArea, "已经是第一条了");
-				}
-				Memo m = list.get(index);
-				textField.setText(m.getName());
-				textField_1.setText(m.getType());
-				textField_2.setText(m.getTime());
-				textField_3.setText(m.getTheame());
-				textArea.setText(m.getContext());
-
-			}
-		});
-
-		
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				++index;
-				if (index > list.size() - 1) {
-
+			button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 					if (list.size() == 0) {
-						index = 0;
+
 					} else {
-						index = list.size() - 1;
+						--index;
+						if (index < 0) {
+							index = 0;
+							JOptionPane.showMessageDialog(textArea, "已经是第一条了");
+						}
+						Memo m = list.get(index);
+						textField.setText(m.getName());
+						textField_1.setText(m.getType());
+						textField_2.setText(m.getTime());
+						textField_3.setText(m.getTheame());
+						textArea.setText(m.getContext());
 					}
-					JOptionPane.showMessageDialog(textArea, "已经是最后一条了");
 				}
-				Memo m = list.get(index);
+			});
 
-				textField.setText(m.getName());
-				textField_1.setText(m.getType());
-				textField_2.setText(m.getTime());
-				textField_3.setText(m.getTheame());
-				textArea.setText(m.getContext());
-			}
-		});
+			button_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 
-		
-		button_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					new MemoDao().removeMemo(list.get(index));
-					list.remove(index);
-					if (index != 0) {
-						index--;
-					}
 					if (list.size() == 0) {
-						textField.setText("");
-						textField_1.setText("");
-						textField_2.setText("");
-						textField_3.setText("");
-						textArea.setText("");
-						JOptionPane.showMessageDialog(textArea, "备忘本为空");
 						
-
 					} else {
+						++index;
+						if (index > list.size() - 1) {
+							if (list.size() == 0) {
+								index = 0;
+							} else {
+								index = list.size() - 1;
+							}
+							JOptionPane.showMessageDialog(textArea, "已经是最后一条了");
+						}
+						Memo m = list.get(index);
 
-						JOptionPane.showMessageDialog(textArea, "删除成功");
+						textField.setText(m.getName());
+						textField_1.setText(m.getType());
+						textField_2.setText(m.getTime());
+						textField_3.setText(m.getTheame());
+						textArea.setText(m.getContext());
 					}
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				}
-			}
-		});
+			});
 
-		
-		button_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
-	}
-		
-		button_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
-		
+			button_3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+				}
+			});
+		} else {
+
+			button_3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+				}
+			});
+		}
 	}
 }

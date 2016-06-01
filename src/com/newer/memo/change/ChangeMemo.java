@@ -57,6 +57,7 @@ public class ChangeMemo extends JFrame {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setSize(690,320);
 		setContentPane(contentPane);
 
 		JLabel label = new JLabel("\u59D3\u540D");
@@ -95,63 +96,75 @@ public class ChangeMemo extends JFrame {
 		}
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_contentPane.createSequentialGroup().addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup().addGroup(gl_contentPane
-								.createParallelGroup(Alignment.LEADING).addComponent(label)
-								.addComponent(label_4))
-								.addGap(
-										6)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-										.addGroup(gl_contentPane.createSequentialGroup().addGap(4)
-												.addComponent(textField, GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addGap(18).addComponent(label_1).addGap(18)
-												.addComponent(textField_1, GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addGap(18).addComponent(label_2)
-												.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(textField_2,
-														GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-														GroupLayout.PREFERRED_SIZE))
-										.addGroup(gl_contentPane.createSequentialGroup()
-												.addPreferredGap(ComponentPlacement.UNRELATED)
-												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-														.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 314,
-																Short.MAX_VALUE)
-														.addComponent(textField_3)
-														.addGroup(gl_contentPane.createSequentialGroup()
-																.addComponent(button)
-																.addPreferredGap(ComponentPlacement.RELATED, 15,
-																		Short.MAX_VALUE)
-																.addComponent(button_1).addGap(18)
-																.addComponent(button_2).addGap(23)
-																.addComponent(button_4)))))
-								.addPreferredGap(ComponentPlacement.RELATED).addComponent(lblyyyymmdd))
-						.addComponent(label_3)).addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(label)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_1)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_2)
-								.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblyyyymmdd))
-						.addGap(28)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(label_3)
-								.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-								.createSequentialGroup().addGap(23)
-								.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(button)
-										.addComponent(button_1).addComponent(button_2).addComponent(button_4)))
-								.addGroup(gl_contentPane.createSequentialGroup().addGap(77).addComponent(label_4)))
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(label)
+						.addComponent(label_3)
+						.addComponent(label_4))
+					.addGap(4)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(button)
+							.addPreferredGap(ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+							.addComponent(button_1)
+							.addGap(18)
+							.addComponent(button_2)
+							.addGap(23)
+							.addComponent(button_4))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(31)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(label_1)
+									.addGap(27)
+									.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addGap(30)
+									.addComponent(label_2)
+									.addGap(18)
+									.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+								.addComponent(textField_3, GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE))))
+					.addGap(14)
+					.addComponent(lblyyyymmdd)
+					.addGap(136))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(label_1)
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label)
+						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_2)
+						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblyyyymmdd))
+					.addGap(28)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_3))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(23)
+							.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(button)
+								.addComponent(button_1)
+								.addComponent(button_2)
+								.addComponent(button_4)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(77)
+							.addComponent(label_4)))
+					.addContainerGap(30, Short.MAX_VALUE))
+		);
 		contentPane.setLayout(gl_contentPane);
 		
 		if(tag){
